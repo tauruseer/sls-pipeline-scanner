@@ -1,0 +1,29 @@
+name: 'SLS Pipeline Scanner'
+description: 'An extension to run the SLS SCA and SAST scanner in your pipeline.'
+author: 'Start Left Security'
+branding:
+  icon: 'docker'
+  color: 'blue'
+
+inputs:
+  scanKey:
+    description: 'The asset scan key found in the Asset Details page'
+    required: true
+  username:
+    description: 'Azure Container Registry username'
+    required: true
+  password:
+    description: 'Azure Container Registry password'
+    required: true
+  runSCA:
+    description: 'Indicates whether to run SCA or not'
+    required: true
+    default: 'true'
+  runSAST:
+    description: 'Indicates whether to run SAST or not'
+    required: true
+    default: 'true'
+
+runs:
+  using: 'node16'
+  main: 'index.js'
