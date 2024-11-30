@@ -2,7 +2,8 @@ name: 'SLS Pipeline Scanner'
 description: 'An extension to run the SLS SCA and SAST scanner in your pipeline.'
 author: 'Start Left Security'
 branding:
-  icon: 'docker'
+  icon: 'shield'
+  icon-theme: 'security'
   color: 'blue'
 
 inputs:
