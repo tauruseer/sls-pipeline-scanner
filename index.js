@@ -13,8 +13,8 @@ const run = async () => {
     const acrUsername = process.env.INPUT_USERNAME;
     const acrPassword = process.env.INPUT_PASSWORD;
     const scanKey = process.env.INPUT_SCANKEY;
-    const includeSCA = stringToBool(process.env.RUNSCA);
-    const includeSAST = stringToBool(process.env.RUNSAST);
+    const includeSCA = stringToBool(process.env.INPUT_RUNSCA);
+    const includeSAST = stringToBool(process.env.INPUT_RUNSAST);
     const workspace = process.env.GITHUB_WORKSPACE;
 
     // Login to ACR
