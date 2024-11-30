@@ -9,8 +9,8 @@ This GitHub Action runs the SLS SCA and SAST scanner in your pipeline..
 | `scanKey`       | The asset identifier found in the asset details page       | Yes      |                     |
 | `username`      | Azure Container Registry username.                         | Yes      |                     |
 | `password`      | Azure Container Registry password.                         | Yes      |                     |
-| `runSCA`        | Specificy if you want to run an SCA scan true|false        | Yes      | true                |
-| `runSAST`       | Specificy if you want to run an SAST scan true|false       | Yes      | true                |
+| `runSCA`        | Specificy if you want to run an SCA scan true or false     | Yes      | true                |
+| `runSAST`       | Specificy if you want to run an SAST scan true or false    | Yes      | true                |
 
 ## Example Usage
 
