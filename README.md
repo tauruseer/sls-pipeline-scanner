@@ -1,4 +1,4 @@
-# Azure Container Registry Image Runner
+# SLS Pipelien Scanner
 
 This GitHub Action runs the SLS SCA and SAST scanner in your pipeline..
 
@@ -27,13 +27,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout Code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Pull and Run SLS Scanner
-      uses: start-left-security/sls-scanner-action@v1
+      uses: tauruseer/sls-scanner-action@v1
       with:
-        scanKey: ${{ secrets.SCAN_KEY }}
-        username: ${{ secrets.ACR_USERNAME }}
-        password: ${{ secrets.ACR_PASSWORD }}
+        scanKey: ${{ secrets.SLS_SCAN_KEY }}
+        username: ${{ secrets.SLS_CLIENT_ID }}
+        password: ${{ secrets.SLS_CLIENT_SECRET }}
         runSCA: 'true'
         runSAST: 'true'
