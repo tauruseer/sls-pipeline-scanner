@@ -30,7 +30,7 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Pull and Run SLS Scanner
-      uses: tauruseer/sls-scanner-action@v1
+      uses: tauruseer/sls-pipeline-scanner@v1.0.2
       with:
         scanKey: ${{ secrets.SLS_SCAN_KEY }}
         username: ${{ secrets.SLS_CLIENT_ID }}
