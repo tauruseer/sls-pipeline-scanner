@@ -1,4 +1,4 @@
-# SLS Pipelien Scanner
+# SLS Pipeline Scanner
 
 This GitHub Action runs the SLS SCA and SAST scanner in your pipeline..
 
