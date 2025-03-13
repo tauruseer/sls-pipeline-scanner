@@ -15,7 +15,10 @@ const run = async () => {
     const scanKey = process.env.INPUT_SCANKEY;
     const includeSCA = stringToBool(process.env.INPUT_RUNSCA);
     const includeSAST = stringToBool(process.env.INPUT_RUNSAST);
+    const includeGitLeaks = stringToBool(process.env.INPUT_RUNGITLEAKS);
     const workspace = process.env.GITHUB_WORKSPACE;
+    //const repository = process.env.GITHUB_REPOSITORY;
+    //const branch = process.env.GITHUB_REF;
 
     // Login to ACR
     console.log(`Logging in to ACR: ${acrName}.azurecr.io`);
@@ -28,8 +31,13 @@ const run = async () => {
         await execCommand(`docker pull ${acrName}.azurecr.io/${scaImage}`);
     
         console.log('Running the SCA scan');
+        if(includeGitLeaks){
+            await execCommand(`docker run -v ${workspace}:/source ${acrName}.azurecr.io/${scaImage} --scan-key=${scanKey} --secrets=yes`);
+        }
+        else {
         // Run the SCA image
         await execCommand(`docker run -v ${workspace}:/source ${acrName}.azurecr.io/${scaImage} --scan-key=${scanKey}`);
+        }
     }
 
     // Check if SAST has been selected
