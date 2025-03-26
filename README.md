@@ -20,7 +20,6 @@ This GitHub Action runs the SLS SCA and SAST scanner in your pipeline..
 name: Start Left Security Pipeline Scan
 
 on:
-on:
   # Scan on-demand through GitHub Actions interface:
   workflow_dispatch: {}
   # Scan mainline branches and report all findings:
