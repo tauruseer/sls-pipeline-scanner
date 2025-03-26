@@ -23,7 +23,7 @@ inputs:
   runGitLeaks:
     description: 'Indicates whether to run GitLeaks with the SCA scan'
     required: true
-    default: 'true'
+    default: 'false'
   runSAST:
     description: 'Indicates whether to run SAST or not'
     required: true

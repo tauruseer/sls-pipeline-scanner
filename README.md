@@ -11,6 +11,7 @@ This GitHub Action runs the SLS SCA and SAST scanner in your pipeline..
 | `password`      | Azure Container Registry password.                         | Yes      |                     |
 | `runSCA`        | Specificy if you want to run an SCA scan true or false     | Yes      | true                |
 | `runSAST`       | Specificy if you want to run an SAST scan true or false    | Yes      | true                |
+| `runGitLeaks`   | Specificy if you want to run Gitleaks in the SAST scan     | No       | false               |
 
 ## Example Usage
 
@@ -49,3 +50,4 @@ jobs:
         password: ${{ secrets.SLS_CLIENT_SECRET }}
         runSCA: 'true'
         runSAST: 'true'
+        runGitleaks: 'true'

@@ -1,8 +1,8 @@
 const { exec } = require('child_process');
 
 function stringToBool(str) {
-    return str.toLowerCase() === 'true';
-  }
+  return str.toLowerCase() === 'true';
+}
 
 const run = async () => {
   try {
@@ -26,29 +26,29 @@ const run = async () => {
 
     // Check if SCA has been selected
     if (includeSCA) {
-        console.log('Pulling the SCA image');
-        // Pull the SCA image
-        await execCommand(`docker pull ${acrName}.azurecr.io/${scaImage}`);
-    
-        console.log('Running the SCA scan');
-        if(includeGitLeaks){
-            await execCommand(`docker run -v ${workspace}:/source ${acrName}.azurecr.io/${scaImage} --scan-key=${scanKey} --secrets=yes`);
-        }
-        else {
-        // Run the SCA image
-        await execCommand(`docker run -v ${workspace}:/source ${acrName}.azurecr.io/${scaImage} --scan-key=${scanKey}`);
-        }
+      console.log('Pulling the SCA image');
+      // Pull the SCA image
+      await execCommand(`docker pull ${acrName}.azurecr.io/${scaImage}`);
+
+      console.log('Running the SCA scan');
+      // Run the SCA image
+      await execCommand(`docker run -v ${workspace}:/source ${acrName}.azurecr.io/${scaImage} --scan-key=${scanKey}`);
     }
 
     // Check if SAST has been selected
     if (includeSAST) {
-        console.log('Pulling the SAST image');
-        // Pull the SAST image
-        await execCommand(`docker pull ${acrName}.azurecr.io/${sastImage}`);
-    
-        console.log('Running the SAST scan');
+      console.log('Pulling the SAST image');
+      // Pull the SAST image
+      await execCommand(`docker pull ${acrName}.azurecr.io/${sastImage}`);
+
+      console.log('Running the SAST scan');
+      if (includeGitLeaks) {
+        await execCommand(`docker run -v ${workspace}:/source ${acrName}.azurecr.io/${scaImage} --scan-key=${scanKey} --secrets=yes`);
+      }
+      else {
         // Run the SAST image
         await execCommand(`docker run -v ${workspace}:/source ${acrName}.azurecr.io/${sastImage} --scan-key=${scanKey}`);
+      }
     }
 
   } catch (error) {
