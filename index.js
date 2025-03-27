@@ -43,6 +43,7 @@ const run = async () => {
 
       console.log('Running the SAST scan');
       if (includeGitLeaks) {
+        console.log('     - Using the GitLeaks rules');
         await execCommand(`docker run -v ${workspace}:/source ${acrName}.azurecr.io/${sastImage} --scan-key=${scanKey} --secrets=yes`);
       }
       else {
